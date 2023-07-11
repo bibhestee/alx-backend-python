@@ -13,6 +13,7 @@ async def task_wait_n(n: int, max_delay: int) -> List[float]:
         Return:
             list of delayed values
     """
-    done, pend = await asyncio.wait([task_wait_random(max_delay) for i in range(n)])
+    done, pend = await asyncio.wait([task_wait_random(max_delay)
+                                    for i in range(n)])
     results = [task.result() for task in done]
     return sorted(results)
