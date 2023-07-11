@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ Multiple coroutines at the same time with async """
 from typing import List
+import asyncio
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
@@ -12,8 +13,6 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
         Return:
             list of delayed values
     """
-    delays = []
-    for i in range(n+1):
-        delays.append(await wait_random(max_delay))
-    delays.sort()
-    return delays
+    done, pending = await asyncio.wait([wait_random(max_delay) for i in range(n)])
+    results = [task.result() for task in done]
+    return sorted(results)
