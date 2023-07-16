@@ -4,6 +4,13 @@ from typing import Callable
 
 
 def multiply(a: float) -> float:
+    """
+    multiply - multiply the arg by itself
+    Arguments:
+        a - float
+    Return:
+        square of a
+    """
     return a * a
 
 
