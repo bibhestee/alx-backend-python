@@ -31,7 +31,6 @@ class TestGithubOrgClient(unittest.TestCase):
         test.org()
         get_json_mock.assert_called_once_with(endpoint)
 
-    # @patch('GithubOrgClient.org', new_callable=PropertyMock)
     def test_public_repos_url(self):
         """
         test _public_repos_url method in client.GithubOrgClient
@@ -63,7 +62,6 @@ class TestGithubOrgClient(unittest.TestCase):
                    new_callable=PropertyMock) as mock_public_repos_url:
 
             test = GithubOrgClient('test')
-            # mock_public_repos_url.return_value = test._public_repos_url
             repo_list = test.public_repos()
             self.assertEqual(["google_repo", "alx-repo"], repo_list)
             mock_public_repos_url.assert_called_once()
