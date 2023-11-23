@@ -6,7 +6,6 @@ import requests
 import unittest
 from unittest.mock import MagicMock, patch, PropertyMock
 from parameterized import parameterized, parameterized_class
-# from utils import get_json, access_nested_map, memoize
 from client import GithubOrgClient
 import client
 from fixtures import TEST_PAYLOAD
@@ -83,10 +82,6 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(result, expected)
 
 
-@parameterized_class(
-        (org_payload, repos_payload, expected_repos, apache2_repos),
-        TEST_PAYLOAD
-        )
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """
     Integration test
